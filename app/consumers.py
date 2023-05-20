@@ -1,6 +1,10 @@
 from channels.exceptions import StopConsumer
 from channels.generic.websocket import WebsocketConsumer
 
+#配置日志记录器
+import logging
+logger = logging.getLogger('WebChat')
+
 class ChatConsumer(WebsocketConsumer):
     def websocket_connect(self, message):
         '''
