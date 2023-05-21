@@ -1,11 +1,13 @@
 from channels.exceptions import StopConsumer
 from channels.generic.websocket import WebsocketConsumer
+import json
+from app.models import Settings
 
 #配置日志记录器
 import logging
-logger = logging.getLogger('WebChat')
+logger = logging.getLogger(__name__)
 
-class ChatConsumer(WebsocketConsumer):
+class login(WebsocketConsumer):
     def websocket_connect(self, message):
         '''
         当有客户端向后端发送websocket连接请求时，自动触发该函数
@@ -14,6 +16,8 @@ class ChatConsumer(WebsocketConsumer):
         '''
         # 服务器允许客户端创建连接
         self.accept()
+        self.send(text_data=json.dumps({'mode': 'load','web_name':''}))
+
 
     def websocket_receive(self, message):
         '''
