@@ -4,3 +4,11 @@ INFO 2023-05-21 20:03:41,282 autoreload Watching for file changes with StatReloa
 INFO 2023-05-21 20:09:58,250 autoreload Watching for file changes with StatReloader
 INFO 2023-05-21 20:16:16,568 autoreload Watching for file changes with StatReloader
 INFO 2023-05-21 20:17:04,678 autoreload Watching for file changes with StatReloader
+INFO 2023-05-21 20:19:30,496 autoreload Watching for file changes with StatReloader
+INFO 2023-05-21 20:19:35,302 runserver HTTP GET / 200 [0.09, 127.0.0.1:64777]
+WARNING 2023-05-21 20:19:35,457 runserver HTTP GET /static/admin/css/fonts.css 404 [0.06, 127.0.0.1:64777]
+WARNING 2023-05-21 20:19:35,762 log Not Found: /favicon.ico
+WARNING 2023-05-21 20:19:35,762 runserver HTTP GET /favicon.ico 404 [0.02, 127.0.0.1:64779]
+INFO 2023-05-21 20:20:15,572 autoreload Watching for file changes with StatReloader
+INFO 2023-05-21 20:20:17,418 runserver HTTP GET / 200 [0.05, 127.0.0.1:64818]
+WARNING 2023-05-21 20:20:17,540 runserver HTTP GET /static/admin/css/fonts.css 404 [0.03, 127.0.0.1:64818]
