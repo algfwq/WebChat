@@ -65,3 +65,44 @@ INFO 2023-05-27 00:13:35,920 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.
 INFO 2023-05-27 00:13:36,642 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:53001]
 INFO 2023-05-27 00:13:36,643 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:53001]
 INFO 2023-05-27 00:14:34,337 autoreload Watching for file changes with StatReloader
+INFO 2023-05-27 00:15:57,716 autoreload Watching for file changes with StatReloader
+INFO 2023-05-27 00:17:16,936 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:53799]
+INFO 2023-05-27 00:17:16,956 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:53799]
+INFO 2023-05-27 00:17:38,678 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:53799]
+INFO 2023-05-27 00:17:39,381 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:53821]
+INFO 2023-05-27 00:17:39,385 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:53821]
+INFO 2023-05-27 00:17:58,094 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:53821]
+INFO 2023-05-27 00:17:59,199 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:53839]
+INFO 2023-05-27 00:17:59,203 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:53839]
+INFO 2023-05-27 00:32:08,366 autoreload Watching for file changes with StatReloader
+INFO 2023-05-27 00:49:52,088 autoreload Watching for file changes with StatReloader
+INFO 2023-05-27 00:50:06,780 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:60236]
+INFO 2023-05-27 00:50:06,790 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:60236]
+INFO 2023-05-27 00:52:35,630 autoreload Watching for file changes with StatReloader
+INFO 2023-05-27 00:52:47,684 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:60458]
+INFO 2023-05-27 00:52:47,779 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:60458]
+INFO 2023-05-27 00:55:12,146 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:60458]
+INFO 2023-05-27 00:55:13,057 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:61743]
+INFO 2023-05-27 00:55:13,058 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:61743]
+WARNING 2023-05-27 00:55:32,421 log Not Found: /media/logo.ico
+WARNING 2023-05-27 00:55:32,422 runserver HTTP GET /media/logo.ico 404 [0.09, 127.0.0.1:61760]
+WARNING 2023-05-27 00:55:32,690 log Not Found: /favicon.ico
+WARNING 2023-05-27 00:55:32,690 runserver HTTP GET /favicon.ico 404 [0.02, 127.0.0.1:61760]
+INFO 2023-05-27 00:56:13,427 runserver HTTP GET / 200 [0.02, 127.0.0.1:61805]
+WARNING 2023-05-27 00:56:13,531 runserver HTTP GET /static/admin/css/fonts.css 404 [0.02, 127.0.0.1:61805]
+WARNING 2023-05-27 00:56:13,806 log Not Found: /favicon.ico
+WARNING 2023-05-27 00:56:13,807 runserver HTTP GET /favicon.ico 404 [0.06, 127.0.0.1:61805]
+WARNING 2023-05-27 00:56:19,711 log Not Found: /media/logo.ico
+WARNING 2023-05-27 00:56:19,712 runserver HTTP GET /media/logo.ico 404 [0.02, 127.0.0.1:61808]
+INFO 2023-05-27 01:00:45,506 autoreload Watching for file changes with StatReloader
+INFO 2023-05-27 01:01:15,951 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:62701]
+INFO 2023-05-27 01:01:15,957 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:62701]
+INFO 2023-05-27 01:01:17,510 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:62701]
+INFO 2023-05-27 01:01:18,223 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:62705]
+INFO 2023-05-27 01:01:18,224 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:62705]
+INFO 2023-05-27 01:01:20,885 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:62705]
+INFO 2023-05-27 01:01:21,583 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:62716]
+INFO 2023-05-27 01:01:21,584 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:62716]
+INFO 2023-05-27 01:01:24,508 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:62716]
+INFO 2023-05-27 01:01:25,236 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:62727]
+INFO 2023-05-27 01:01:25,239 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:62727]

@@ -1,6 +1,7 @@
 from channels.exceptions import StopConsumer
 from channels.generic.websocket import WebsocketConsumer
 from app.models import Settings
+from django.conf import settings
 import json
 
 #配置日志记录器
@@ -16,8 +17,8 @@ class login(WebsocketConsumer):
         '''
         # 服务器允许客户端创建连接
         self.accept()
-        self.send(json.dumps({'mode': 'load','web_name':Settings.objects.get(id=1).web_name}))
-
+        self.send(json.dumps({'mode': 'load',
+                              'web_name':Settings.objects.get(id=1).web_name}))
 
     def websocket_receive(self, message):
         '''
