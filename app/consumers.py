@@ -18,7 +18,8 @@ class login(WebsocketConsumer):
         # 服务器允许客户端创建连接
         self.accept()
         self.send(json.dumps({'mode': 'load',
-                              'web_name':Settings.objects.get(id=1).web_name}))
+                              'web_name':Settings.objects.get(id=1).web_name,
+                              'email':Settings.objects.get(id=1).email_ture }))
 
     def websocket_receive(self, message):
         '''
