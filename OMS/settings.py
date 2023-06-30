@@ -49,6 +49,7 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': 'django_info.log',  # 可以更改文件名以反映日志级别
             'formatter': 'verbose',
+            'encoding': 'utf-8',
         },
         'console': {
             'level': 'INFO',
