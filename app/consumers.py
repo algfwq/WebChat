@@ -108,18 +108,57 @@ class login(WebsocketConsumer):
             else:
                 # 保存用户信息到数据库中
                 try:
-                    #判断是否重复
+                    # 判断是否重复
                     try:
                         User.objects.get(username=name)
-                        self.send(json.dumps({'mode':'register_username_repeat','message': '用户名重复！'}))
+                        self.send(json.dumps({'mode': 'register_username_repeat', 'message': '用户名重复！'}))
                     except:
-                        User.objects.create(username=name, password=password, email=email, super='F')
+                        User.objects.create(username=name, password=password, email=email)
                         self.send(json.dumps({'mode': 'register_success',
                                               'message': '注册成功！',
                                               'url': '/'}))
                 except:
                     self.send(json.dumps({'mode': 'register_failure', 'message': '注册失败！'}))
-                    logger.error('注册用户失败！',name,password,email,email_code)
+                    logger.error('注册用户失败！', name, password, email, email_code)
+
+        # 如果为登录请求
+        elif text['mode'] == 'login':
+            # 接收参数
+            name_or_email = text['name']
+            password = text['password']
+            if '@' in name_or_email:
+                # 检查用户是否存在
+                try:
+                    User.objects.get(email=name_or_email)
+                    check_user = 1
+                except:
+                    check_user = 0
+
+                # 检查密码是否正确
+                if check_user == 1:
+                    user = User.objects.get(email=name_or_email)
+                    if user.password == password:
+                        self.send(json.dumps({'mode': 'login_success', 'message': '登录成功！', 'url': '/'}))
+                    else:
+                        self.send(json.dumps({'mode': 'login_password_wrong', 'message': '密码错误！'}))
+                else:
+                    self.send(json.dumps({'mode': 'login_username_wrong', 'message': '用户不存在！'}))
+            else:
+                # 检查用户是否存在
+                try:
+                    User.objects.get(username=name_or_email)
+                    check_user = 1
+                except:
+                    check_user = 0
+                # 检查密码是否正确
+                if check_user == 1:
+                    user = User.objects.get(username=name_or_email)
+                    if user.password == password:
+                        self.send(json.dumps({'mode': 'login_success', 'message': '登录成功！', 'url': '/'}))
+                    else:
+                        self.send(json.dumps({'mode': 'login_password_wrong', 'message': '密码错误！'}))
+                else:
+                    self.send(json.dumps({'mode': 'login_username_wrong', 'message': '用户不存在！'}))
 
     def websocket_disconnect(self, message):
         '''
