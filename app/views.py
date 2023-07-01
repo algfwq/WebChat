@@ -9,3 +9,6 @@ def logo_down(request):
     response['Content-Type']='application/octet-stream'
     response['Content-Disposition']='attachment;filename="logo.ico"'
     return response
+
+def login(request):
+    return render(request, 'login.html')

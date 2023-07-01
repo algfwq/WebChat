@@ -113,10 +113,14 @@ class login(WebsocketConsumer):
                         User.objects.get(username=name)
                         self.send(json.dumps({'mode': 'register_username_repeat', 'message': '用户名重复！'}))
                     except:
-                        User.objects.create(username=name, password=password, email=email)
-                        self.send(json.dumps({'mode': 'register_success',
-                                              'message': '注册成功！',
-                                              'url': '/'}))
+                        try:
+                            User.objects.get(email=email)
+                            self.send(json.dumps({'mode':'register_username_repeat','message': '邮箱重复！'}))
+                        except:
+                            User.objects.create(username=name, password=password, email=email)
+                            self.send(json.dumps({'mode': 'register_success',
+                                                  'message': '注册成功！',
+                                                  'url': '/'}))
                 except:
                     self.send(json.dumps({'mode': 'register_failure', 'message': '注册失败！'}))
                     logger.error('注册用户失败！', name, password, email, email_code)
