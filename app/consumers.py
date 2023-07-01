@@ -1,15 +1,17 @@
 from channels.exceptions import StopConsumer
 from channels.generic.websocket import WebsocketConsumer
-from app.models import Settings
+from app.models import Settings, User
 from django.conf import settings
-from django.core.cache import cache #引入缓存模块
+from django.core.cache import cache  # 引入缓存模块
 from django.core import mail
 import random
 import json
 
-#配置日志记录器
+# 配置日志记录器
 import logging
+
 logger = logging.getLogger('django')
+
 
 class login(WebsocketConsumer):
     def websocket_connect(self, message):
@@ -21,8 +23,8 @@ class login(WebsocketConsumer):
         # 服务器允许客户端创建连接
         self.accept()
         self.send(json.dumps({'mode': 'load',
-                              'web_name':Settings.objects.get(id=1).web_name,
-                              'email':Settings.objects.get(id=1).email_ture }))
+                              'web_name': Settings.objects.get(id=1).web_name,
+                              'email': Settings.objects.get(id=1).email_ture}))
 
     def websocket_receive(self, message):
         '''
@@ -33,19 +35,20 @@ class login(WebsocketConsumer):
         # 输出消息
         print(message['text'])
         text = dict(eval(message['text']))
-        #如果为发送验证码请求
+        # 如果为发送验证码请求
         if text['mode'] == 'send_code':
-            #生成验证码
-            a = random.randint(1,9)
-            b = random.randint(1,9)
-            c = random.randint(1,9)
-            d = random.randint(1,9)
-            code =  a*1000 + b*100 + c*10 + d
-            #缓存验证码到Redis
+            # 生成验证码
+            a = random.randint(1, 9)
+            b = random.randint(1, 9)
+            c = random.randint(1, 9)
+            d = random.randint(1, 9)
+            code = a * 1000 + b * 100 + c * 10 + d
+            # 缓存验证码到Redis
             cache.set(text['email'], code, 30 * 60)  # 写入key为v，值为555的缓存，有效期30分钟
-            #发送验证码到用户邮箱
+            # 发送验证码到用户邮箱
             email = text['email']
-            email_message = "您正在注册" + Settings.objects.get(id=1).web_name + "，您的验证码是：" + str(code) + "。有效期30分钟。如果这不是你本人操作，您的邮箱账号很可能已经泄漏，并且被他人用于非法目的。"
+            email_message = "您正在注册" + Settings.objects.get(id=1).web_name + "，您的验证码是：" + str(
+                code) + "。有效期30分钟。如果这不是你本人操作，您的邮箱账号很可能已经泄漏，并且被他人用于非法目的。"
             recipient_list = []
             recipient_list.append(email)
             try:
@@ -56,10 +59,67 @@ class login(WebsocketConsumer):
                     recipient_list=recipient_list,  # 接收者邮件列表
                     auth_password='ss699610'  # 在QQ邮箱->设置->帐户->“POP3/IMAP......服务” 里得到的在第三方登录QQ邮箱授权码
                 )
-                self.send(json.dumps({'mode':'code_message','message':'验证码发送成功！'}))
+                self.send(json.dumps({'mode': 'code_message', 'message': '验证码发送成功！'}))
             except:
                 logger.error('邮件发送失败：' + email)
-                self.send(json.dumps({'mode':'code_message','message':'发送验证码出现异常！请检查你的邮箱！'}))
+                self.send(json.dumps({'mode': 'code_message', 'message': '发送验证码出现异常！请检查你的邮箱！'}))
+
+        # 如果为注册账号请求
+        elif text['mode'] == 'register':
+            # 接收参数
+            name = text['name']
+            password = text['password']
+            email = text['email']
+            email_code = text['email_code']
+
+            # 检查验证码函数
+            def check_code(email, email_code):
+                try:
+                    cache.get(email)
+                    cache_mode = 1
+                except:
+                    cache_mode = 0
+
+                if cache_mode == 0:
+                    return False
+                else:
+                    if email_code == str(cache.get(email)):
+                        return True
+                    else:
+                        return False
+
+            # 验证用户输入
+            if len(name) > 15:
+                self.send(json.dumps({'mode': 'register_name_too_long', 'message': '名称长度不能超过15个字符！'}))
+
+            elif len(password) > 30:
+                self.send(json.dumps({'mode': 'register_password_too_long', 'message': '密码长度不能超过30个字符！'}))
+
+            elif len(email) > 100:
+                self.send(json.dumps({'mode': 'register_email_too_long', 'message': '邮箱长度不能超过100个字符！'}))
+
+            elif len(email_code) != 4:
+                self.send(json.dumps({'mode': 'register_email_code_wrong', 'message': '验证码不正确！'}))
+
+            # 验证验证码
+            elif not check_code(email, email_code):
+                self.send(json.dumps({'mode': 'register_email_code_wrong', 'message': '验证码不正确！'}))
+
+            else:
+                # 保存用户信息到数据库中
+                try:
+                    #判断是否重复
+                    try:
+                        User.objects.get(username=name)
+                        self.send(json.dumps({'mode':'register_username_repeat','message': '用户名重复！'}))
+                    except:
+                        User.objects.create(username=name, password=password, email=email, super='F')
+                        self.send(json.dumps({'mode': 'register_success',
+                                              'message': '注册成功！',
+                                              'url': '/'}))
+                except:
+                    self.send(json.dumps({'mode': 'register_failure', 'message': '注册失败！'}))
+                    logger.error('注册用户失败！',name,password,email,email_code)
 
     def websocket_disconnect(self, message):
         '''
