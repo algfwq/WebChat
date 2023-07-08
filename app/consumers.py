@@ -9,9 +9,7 @@ import json
 
 # 配置日志记录器
 import logging
-
 logger = logging.getLogger('django')
-
 
 class login(WebsocketConsumer):
     def websocket_connect(self, message):
