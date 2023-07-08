@@ -8,6 +8,6 @@ class Settings(models.Model):
 class User(models.Model):
     username = models.CharField(max_length=15)
     password = models.CharField(max_length=30)
-    email = models.CharField(max_length=100)
+    email = models.CharField(max_length=100,default='NO')
     super = models.CharField(max_length=10,default='F')
     robot = models.CharField(max_length=10,default='F')

@@ -35,6 +35,7 @@ class login(WebsocketConsumer):
         # 输出消息
         print(message['text'])
         text = dict(eval(message['text']))
+
         # 如果为发送验证码请求
         if text['mode'] == 'send_code':
             # 生成验证码
@@ -66,103 +67,115 @@ class login(WebsocketConsumer):
 
         # 如果为注册账号请求
         elif text['mode'] == 'register':
-            # 接收参数
-            name = text['name']
-            password = text['password']
-            email = text['email']
-            email_code = text['email_code']
+            #判断设置，是否支持邮箱
+            if Settings.objects.get(id=1).email_ture == 'F':
+                #接收参数
+                name = text['name']
+                password = text['password']
 
-            # 检查验证码函数
-            def check_code(email, email_code):
-                try:
-                    cache.get(email)
-                    cache_mode = 1
-                except:
-                    cache_mode = 0
+                # 验证用户输入
+                if len(name) > 15:
+                    self.send(json.dumps({'mode': 'register_name_too_long', 'message': '名称长度不能超过15个字符！'}))
 
-                if cache_mode == 0:
-                    return False
+                elif len(password) > 30:
+                    self.send(json.dumps({'mode': 'register_password_too_long', 'message': '密码长度不能超过30个字符！'}))
+
                 else:
-                    if email_code == str(cache.get(email)):
-                        return True
-                    else:
-                        return False
-
-            # 验证用户输入
-            if len(name) > 15:
-                self.send(json.dumps({'mode': 'register_name_too_long', 'message': '名称长度不能超过15个字符！'}))
-
-            elif len(password) > 30:
-                self.send(json.dumps({'mode': 'register_password_too_long', 'message': '密码长度不能超过30个字符！'}))
-
-            elif len(email) > 100:
-                self.send(json.dumps({'mode': 'register_email_too_long', 'message': '邮箱长度不能超过100个字符！'}))
-
-            elif len(email_code) != 4:
-                self.send(json.dumps({'mode': 'register_email_code_wrong', 'message': '验证码不正确！'}))
-
-            # 验证验证码
-            elif not check_code(email, email_code):
-                self.send(json.dumps({'mode': 'register_email_code_wrong', 'message': '验证码不正确！'}))
-
-            else:
-                # 保存用户信息到数据库中
-                try:
-                    # 判断是否重复
+                    # 保存用户信息到数据库中
                     try:
-                        User.objects.get(username=name)
-                        self.send(json.dumps({'mode': 'register_username_repeat', 'message': '用户名重复！'}))
-                    except:
+                        # 判断是否重复
                         try:
-                            User.objects.get(email=email)
-                            self.send(json.dumps({'mode':'register_username_repeat','message': '邮箱重复！'}))
+                            User.objects.get(username=name)
+                            self.send(json.dumps({'mode': 'register_username_repeat', 'message': '用户名重复！'}))
                         except:
-                            User.objects.create(username=name, password=password, email=email)
+                            User.objects.create(username=name, password=password)
                             self.send(json.dumps({'mode': 'register_success',
                                                   'message': '注册成功！',
-                                                  'url': '/'}))
-                except:
-                    self.send(json.dumps({'mode': 'register_failure', 'message': '注册失败！'}))
-                    logger.error('注册用户失败！', name, password, email, email_code)
+                                                  'url': '/chat/'}))
+                    except:
+                        self.send(json.dumps({'mode': 'register_failure', 'message': '注册失败！'}))
+                        logger.error('注册用户失败！', name, password)
+
+            else:
+                # 接收参数
+                name = text['name']
+                password = text['password']
+                email = text['email']
+                email_code = text['email_code']
+
+                # 检查验证码函数
+                def check_code(email, email_code):
+                    try:
+                        cache.get(email)
+                        cache_mode = 1
+                    except:
+                        cache_mode = 0
+
+                    if cache_mode == 0:
+                        return False
+                    else:
+                        if email_code == str(cache.get(email)):
+                            return True
+                        else:
+                            return False
+
+                # 验证用户输入
+                if len(name) > 15:
+                    self.send(json.dumps({'mode': 'register_name_too_long', 'message': '名称长度不能超过15个字符！'}))
+
+                elif len(password) > 30:
+                    self.send(json.dumps({'mode': 'register_password_too_long', 'message': '密码长度不能超过30个字符！'}))
+
+                elif len(email) > 100:
+                    self.send(json.dumps({'mode': 'register_email_too_long', 'message': '邮箱长度不能超过100个字符！'}))
+
+                elif len(email_code) != 4:
+                    self.send(json.dumps({'mode': 'register_email_code_wrong', 'message': '验证码不正确！'}))
+
+                # 验证验证码
+                elif not check_code(email, email_code):
+                    self.send(json.dumps({'mode': 'register_email_code_wrong', 'message': '验证码不正确！'}))
+
+                else:
+                    # 保存用户信息到数据库中
+                    try:
+                        # 判断是否重复
+                        try:
+                            User.objects.get(username=name)
+                            self.send(json.dumps({'mode': 'register_username_repeat', 'message': '用户名重复！'}))
+                        except:
+                            try:
+                                User.objects.get(email=email)
+                                self.send(json.dumps({'mode':'register_username_repeat','message': '邮箱重复！'}))
+                            except:
+                                User.objects.create(username=name, password=password, email=email)
+                                self.send(json.dumps({'mode': 'register_success',
+                                                      'message': '注册成功！',
+                                                      'url': '/chat/'}))
+                    except:
+                        self.send(json.dumps({'mode': 'register_failure', 'message': '注册失败！'}))
+                        logger.error('注册用户失败！', name, password, email, email_code)
 
         # 如果为登录请求
         elif text['mode'] == 'login':
             # 接收参数
-            name_or_email = text['name']
+            name = text['name']
             password = text['password']
-            if '@' in name_or_email:
-                # 检查用户是否存在
-                try:
-                    User.objects.get(email=name_or_email)
-                    check_user = 1
-                except:
-                    check_user = 0
-
-                # 检查密码是否正确
-                if check_user == 1:
-                    user = User.objects.get(email=name_or_email)
-                    if user.password == password:
-                        self.send(json.dumps({'mode': 'login_success', 'message': '登录成功！', 'url': '/'}))
-                    else:
-                        self.send(json.dumps({'mode': 'login_password_wrong', 'message': '密码错误！'}))
+            # 检查用户是否存在
+            try:
+                User.objects.get(username=name)
+                check_user = 1
+            except:
+                check_user = 0
+            # 检查密码是否正确
+            if check_user == 1:
+                user = User.objects.get(username=name)
+                if user.password == password:
+                    self.send(json.dumps({'mode': 'login_success', 'message': '登录成功！', 'url': '/chat/'}))
                 else:
-                    self.send(json.dumps({'mode': 'login_username_wrong', 'message': '用户不存在！'}))
+                    self.send(json.dumps({'mode': 'login_password_wrong', 'message': '密码错误！'}))
             else:
-                # 检查用户是否存在
-                try:
-                    User.objects.get(username=name_or_email)
-                    check_user = 1
-                except:
-                    check_user = 0
-                # 检查密码是否正确
-                if check_user == 1:
-                    user = User.objects.get(username=name_or_email)
-                    if user.password == password:
-                        self.send(json.dumps({'mode': 'login_success', 'message': '登录成功！', 'url': '/'}))
-                    else:
-                        self.send(json.dumps({'mode': 'login_password_wrong', 'message': '密码错误！'}))
-                else:
-                    self.send(json.dumps({'mode': 'login_username_wrong', 'message': '用户不存在！'}))
+                self.send(json.dumps({'mode': 'login_username_wrong', 'message': '用户不存在！'}))
 
     def websocket_disconnect(self, message):
         '''
