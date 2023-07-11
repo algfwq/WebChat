@@ -1,9 +1,10 @@
 from channels.exceptions import StopConsumer
 from channels.generic.websocket import WebsocketConsumer
 from app.models import Settings, User
+from asgiref.sync import async_to_sync
 from django.conf import settings
 from django.core.cache import cache  # 引入缓存模块
-from django.core import mail
+from.tasks import send_code
 import random
 import json
 
@@ -50,18 +51,14 @@ class login(WebsocketConsumer):
                 code) + "。有效期30分钟。如果这不是你本人操作，您的邮箱账号很可能已经泄漏，并且被他人用于非法目的。"
             recipient_list = []
             recipient_list.append(email)
-            try:
-                mail.send_mail(
-                    subject='注册' + Settings.objects.get(id=1).web_name,  # 题目
-                    message=email_message,  # 消息内容
-                    from_email='algpythontest@outlook.com',  # 发送者[当前配置邮箱]
-                    recipient_list=recipient_list,  # 接收者邮件列表
-                    auth_password='ss699610'  # 在QQ邮箱->设置->帐户->“POP3/IMAP......服务” 里得到的在第三方登录QQ邮箱授权码
-                )
-                self.send(json.dumps({'mode': 'code_message', 'message': '验证码发送成功！'}))
-            except:
-                logger.error('邮件发送失败：' + email)
-                self.send(json.dumps({'mode': 'code_message', 'message': '发送验证码出现异常！请检查你的邮箱！'}))
+            #执行异步发送邮件
+            #设置群组
+            async_to_sync(self.channel_layer.group_add)(
+                str(code),  # 组名称
+                self.channel_name  # 客户端名称
+            )
+            #调用异步任务
+            send_code.delay(str(code),email_message,recipient_list)
 
         # 如果为注册账号请求
         elif text['mode'] == 'register':
@@ -183,3 +180,6 @@ class login(WebsocketConsumer):
         '''
         print('断开连接')
         raise StopConsumer()
+
+    def email_code(self, event):
+        self.send(json.dumps(event))

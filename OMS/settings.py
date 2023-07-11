@@ -117,20 +117,20 @@ REDIS_SSL_STATUS = False  # 是否需要SSL
 REDIS_BASE_URL = "redis://127.0.0.1:6379/"  # 基础连接-用于连接池
 
 #channels通道配置
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    }
-}
-#需要同时运行Redis服务器文件
 # CHANNEL_LAYERS = {
 #     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379)],
-#         },
-#     },
+#         "BACKEND": "channels.layers.InMemoryChannelLayer"
+#     }
 # }
+#需要同时运行Redis服务器文件
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 INSTALLED_APPS = [
     'daphne',   #注册daphne组件，在channels4.0开始，注册组件使用daphne,一定放在开头

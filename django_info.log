@@ -1674,3 +1674,143 @@ WARNING 2023-07-08 16:08:40,011 runserver HTTP GET /chat/ 404 [0.02, 127.0.0.1:5
 INFO 2023-07-08 16:08:40,022 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:52541]
 WARNING 2023-07-08 16:09:45,857 log Not Found: /chat/
 WARNING 2023-07-08 16:09:45,857 runserver HTTP GET /chat/ 404 [0.01, 127.0.0.1:52593]
+INFO 2023-07-11 21:47:18,781 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 21:47:37,891 runserver HTTP GET /login 301 [0.08, 127.0.0.1:58842]
+INFO 2023-07-11 21:47:37,947 runserver HTTP GET /login/ 200 [0.03, 127.0.0.1:58842]
+INFO 2023-07-11 21:47:38,437 runserver HTTP GET /static/login/index-6d03808c.js 200 [0.34, 127.0.0.1:58843]
+INFO 2023-07-11 21:47:38,440 runserver HTTP GET /static/login/index-b9f1492e.css 200 [0.35, 127.0.0.1:58842]
+INFO 2023-07-11 21:47:38,476 runserver HTTP GET /static/login/background-cdf55e3f.jpg 200 [0.01, 127.0.0.1:58842]
+INFO 2023-07-11 21:47:38,587 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:58852]
+INFO 2023-07-11 21:47:38,589 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:58852]
+INFO 2023-07-11 21:48:44,640 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:58852]
+INFO 2023-07-11 21:50:47,547 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 21:50:50,505 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:59268]
+INFO 2023-07-11 21:50:50,787 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:59271]
+INFO 2023-07-11 21:50:50,789 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:59271]
+INFO 2023-07-11 21:50:51,242 runserver HTTP GET /logo/ 200 [0.22, 127.0.0.1:59268]
+INFO 2023-07-11 21:51:02,828 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:59271]
+INFO 2023-07-11 21:54:05,849 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 21:54:09,453 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:59866]
+INFO 2023-07-11 21:54:09,615 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:59872]
+INFO 2023-07-11 21:54:09,618 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:59872]
+INFO 2023-07-11 21:54:09,999 runserver HTTP GET /logo/ 200 [0.24, 127.0.0.1:59866]
+INFO 2023-07-11 21:56:33,563 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 21:57:09,841 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:60485]
+INFO 2023-07-11 21:57:10,026 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:60492]
+INFO 2023-07-11 21:57:10,032 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:60492]
+INFO 2023-07-11 21:57:10,393 runserver HTTP GET /logo/ 200 [0.22, 127.0.0.1:60485]
+INFO 2023-07-11 21:59:28,053 runserver HTTP GET /login/ 200 [0.01, 127.0.0.1:60646]
+INFO 2023-07-11 21:59:28,064 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:60492]
+INFO 2023-07-11 21:59:28,223 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:60651]
+INFO 2023-07-11 21:59:28,225 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:60651]
+INFO 2023-07-11 21:59:28,390 runserver HTTP GET /logo/ 200 [0.02, 127.0.0.1:60646]
+INFO 2023-07-11 22:09:06,814 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 22:09:36,640 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:62499]
+INFO 2023-07-11 22:09:36,828 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:62504]
+INFO 2023-07-11 22:09:36,830 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:62504]
+INFO 2023-07-11 22:09:37,198 runserver HTTP GET /logo/ 200 [0.18, 127.0.0.1:62499]
+INFO 2023-07-11 22:13:32,925 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 22:14:43,929 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:63242]
+INFO 2023-07-11 22:14:44,153 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:63246]
+INFO 2023-07-11 22:14:44,157 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:63246]
+INFO 2023-07-11 22:14:44,586 runserver HTTP GET /logo/ 200 [0.21, 127.0.0.1:63242]
+INFO 2023-07-11 22:18:25,047 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 22:18:28,893 runserver HTTP GET /login/ 200 [0.04, 127.0.0.1:63964]
+INFO 2023-07-11 22:18:29,092 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:63967]
+INFO 2023-07-11 22:18:29,095 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:63967]
+INFO 2023-07-11 22:18:29,504 runserver HTTP GET /logo/ 200 [0.19, 127.0.0.1:63964]
+INFO 2023-07-11 22:21:41,245 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 22:21:45,360 runserver HTTP GET /login/ 200 [0.03, 127.0.0.1:64675]
+INFO 2023-07-11 22:21:45,550 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:64679]
+INFO 2023-07-11 22:21:45,554 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:64679]
+INFO 2023-07-11 22:21:45,945 runserver HTTP GET /logo/ 200 [0.18, 127.0.0.1:64675]
+INFO 2023-07-11 22:25:39,239 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 22:26:19,481 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:64877]
+INFO 2023-07-11 22:26:19,620 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:64880]
+INFO 2023-07-11 22:26:19,622 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:64880]
+INFO 2023-07-11 22:26:19,890 runserver HTTP GET /logo/ 200 [0.18, 127.0.0.1:64877]
+INFO 2023-07-11 22:27:14,991 autoreload E:\OMS\app\tasks.py changed, reloading.
+INFO 2023-07-11 22:27:16,725 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 22:27:29,117 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 22:27:34,175 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:65506]
+INFO 2023-07-11 22:27:34,317 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:65510]
+INFO 2023-07-11 22:27:34,319 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:65510]
+INFO 2023-07-11 22:27:34,677 runserver HTTP GET /logo/ 200 [0.22, 127.0.0.1:65506]
+INFO 2023-07-11 22:29:43,040 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 22:30:12,248 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:49274]
+INFO 2023-07-11 22:30:12,391 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:49277]
+INFO 2023-07-11 22:30:12,393 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:49277]
+INFO 2023-07-11 22:30:12,710 runserver HTTP GET /logo/ 200 [0.21, 127.0.0.1:49274]
+INFO 2023-07-11 22:30:22,697 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:49277]
+INFO 2023-07-11 22:30:58,799 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:49391]
+INFO 2023-07-11 22:30:58,803 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:49391]
+INFO 2023-07-11 22:32:50,494 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 22:32:55,669 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:50097]
+INFO 2023-07-11 22:32:55,840 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:50100]
+INFO 2023-07-11 22:32:55,842 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:50100]
+INFO 2023-07-11 22:32:56,184 runserver HTTP GET /logo/ 200 [0.19, 127.0.0.1:50097]
+INFO 2023-07-11 22:50:53,452 autoreload E:\OMS\app\tasks.py changed, reloading.
+INFO 2023-07-11 22:50:56,021 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:07:27,513 autoreload E:\OMS\app\consumers.py changed, reloading.
+INFO 2023-07-11 23:07:29,356 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:08:53,468 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:09:17,160 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:63579]
+INFO 2023-07-11 23:09:17,378 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:63582]
+INFO 2023-07-11 23:09:17,380 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:63582]
+INFO 2023-07-11 23:09:17,775 runserver HTTP GET /logo/ 200 [0.18, 127.0.0.1:63579]
+INFO 2023-07-11 23:10:59,230 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:11:11,481 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:63665]
+INFO 2023-07-11 23:11:11,627 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:63669]
+INFO 2023-07-11 23:11:11,630 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:63669]
+INFO 2023-07-11 23:11:11,914 runserver HTTP GET /logo/ 200 [0.20, 127.0.0.1:63665]
+INFO 2023-07-11 23:12:14,207 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:12:37,227 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:64252]
+INFO 2023-07-11 23:12:37,374 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:64254]
+INFO 2023-07-11 23:12:37,376 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:64254]
+INFO 2023-07-11 23:12:37,687 runserver HTTP GET /logo/ 200 [0.19, 127.0.0.1:64252]
+INFO 2023-07-11 23:13:37,545 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:13:46,162 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:64280]
+INFO 2023-07-11 23:13:46,306 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:64282]
+INFO 2023-07-11 23:13:46,308 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:64282]
+INFO 2023-07-11 23:13:46,588 runserver HTTP GET /logo/ 200 [0.18, 127.0.0.1:64280]
+INFO 2023-07-11 23:20:58,505 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:21:06,475 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:65272]
+INFO 2023-07-11 23:21:06,671 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:65276]
+INFO 2023-07-11 23:21:06,677 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:65276]
+INFO 2023-07-11 23:21:07,046 runserver HTTP GET /logo/ 200 [0.24, 127.0.0.1:65272]
+INFO 2023-07-11 23:36:26,157 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:43:05,771 autoreload Watching for file changes with StatReloader
+WARNING 2023-07-11 23:43:09,068 log Not Found: /
+WARNING 2023-07-11 23:43:09,069 runserver HTTP GET / 404 [0.07, 127.0.0.1:52764]
+WARNING 2023-07-11 23:43:10,096 log Not Found: /favicon.ico
+WARNING 2023-07-11 23:43:10,097 runserver HTTP GET /favicon.ico 404 [0.02, 127.0.0.1:52764]
+INFO 2023-07-11 23:43:17,980 runserver HTTP GET /login 301 [0.02, 127.0.0.1:52771]
+INFO 2023-07-11 23:43:18,006 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:52771]
+INFO 2023-07-11 23:43:18,172 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:52776]
+INFO 2023-07-11 23:43:18,350 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:52776]
+INFO 2023-07-11 23:46:02,075 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:46:07,397 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:52901]
+INFO 2023-07-11 23:46:07,587 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:52905]
+INFO 2023-07-11 23:46:07,710 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:52905]
+INFO 2023-07-11 23:46:07,999 runserver HTTP GET /logo/ 200 [0.20, 127.0.0.1:52901]
+INFO 2023-07-11 23:46:12,321 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:52905]
+INFO 2023-07-11 23:51:05,562 autoreload Watching for file changes with StatReloader
+INFO 2023-07-11 23:51:32,067 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:54196]
+INFO 2023-07-11 23:51:32,228 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:54201]
+INFO 2023-07-11 23:51:32,425 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:54201]
+INFO 2023-07-11 23:51:32,623 runserver HTTP GET /logo/ 200 [0.20, 127.0.0.1:54196]
+INFO 2023-07-11 23:51:41,004 runserver WebSocket DISCONNECT /login_ws/ [127.0.0.1:54201]
+INFO 2023-07-11 23:56:56,043 autoreload Watching for file changes with StatReloader
+WARNING 2023-07-11 23:57:06,415 log Not Found: /
+WARNING 2023-07-11 23:57:06,417 runserver HTTP GET / 404 [0.06, 127.0.0.1:55016]
+INFO 2023-07-11 23:57:13,374 runserver HTTP GET /login/ 200 [0.01, 127.0.0.1:55016]
+INFO 2023-07-11 23:57:13,528 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:55025]
+INFO 2023-07-11 23:57:13,691 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:55025]
+ERROR 2023-07-11 23:57:18,429 tasks 邮件发送失败：['11']
+INFO 2023-07-11 23:59:18,253 autoreload Watching for file changes with StatReloader
+INFO 2023-07-12 00:00:01,494 autoreload Watching for file changes with StatReloader
+INFO 2023-07-12 00:00:19,318 runserver HTTP GET /login/ 200 [0.02, 127.0.0.1:55199]
+INFO 2023-07-12 00:00:19,482 runserver WebSocket HANDSHAKING /login_ws/ [127.0.0.1:55202]
+INFO 2023-07-12 00:00:19,688 runserver WebSocket CONNECT /login_ws/ [127.0.0.1:55202]
+INFO 2023-07-12 00:00:19,866 runserver HTTP GET /logo/ 200 [0.18, 127.0.0.1:55199]
+ERROR 2023-07-12 00:06:10,665 tasks 邮件发送失败：['310437q.com']
